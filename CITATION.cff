@@ -1,11 +1,11 @@
 cff-version: 1.2.0
 message: If you use this software, please cite it using these metadata.
-title:
-abstract:
+title: Customizable hashing tool
+abstract: Customizable hashing tool
 type: software
 version: 0.1.0
-date-released: YYYY-MM-DD
-repository-code: 
+date-released: 2024-10-09
+repository-code: https://github.com/GreyTeamToolbox/hasher-package
 keywords:
   - "Wolf Software"
   - "Software"
