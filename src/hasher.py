@@ -23,7 +23,6 @@ from typing import Any, Generator, Optional
 
 class HashingError(Exception):
     """Custom exception class for hashing errors."""
-    pass
 
 
 class Hasher:
@@ -46,9 +45,9 @@ class Hasher:
     def __init__(self, rounds: int = 64, block_size: int = 512, hash_length: int = 256,
                  salt: Optional[Any] = None, output_format: str = 'hex', pepper: Optional[Any] = 'default_pepper') -> None:
         """
-        Initializes the Hasher with customizable parameters.
+        Initialise the Hasher with customizable parameters.
 
-        Args:
+        Arguments:
             rounds (int): Number of rounds of hashing, minimum of 64.
             block_size (int): Size of each data block in bits, between 128 and 2048.
             hash_length (int): Desired length of the final hash in bits, up to 512.
@@ -65,9 +64,9 @@ class Hasher:
 
     def _validate_rounds(self, rounds: int) -> int:
         """
-        Validates and ensures that the number of rounds is at least 64.
+        Validate and ensures that the number of rounds is at least 64.
 
-        Args:
+        Arguments:
             rounds (int): The desired number of hashing rounds.
 
         Returns:
@@ -80,9 +79,9 @@ class Hasher:
 
     def _validate_block_size(self, block_size: int) -> int:
         """
-        Validates and adjusts the block size within acceptable bounds.
+        Validate and adjusts the block size within acceptable bounds.
 
-        Args:
+        Arguments:
             block_size (int): Desired block size in bits.
 
         Returns:
@@ -101,9 +100,9 @@ class Hasher:
 
     def _validate_hash_length(self, hash_length: int) -> int:
         """
-        Validates and adjusts the hash length within acceptable bounds.
+        Validate and adjusts the hash length within acceptable bounds.
 
-        Args:
+        Arguments:
             hash_length (int): Desired hash length in bits.
 
         Returns:
@@ -123,9 +122,9 @@ class Hasher:
 
     def _validate_salt(self, salt: Any) -> bytes:
         """
-        Validates the salt and adjusts its length to 16 bytes if needed.
+        Validate the salt and adjusts its length to 16 bytes if needed.
 
-        Args:
+        Arguments:
             salt (Any): The salt value, which can be any type supported by _convert_data_to_bytes.
 
         Returns:
@@ -142,9 +141,9 @@ class Hasher:
 
     def _validate_pepper(self, pepper: Any) -> bytes:
         """
-        Validates the pepper and adjusts its length to 16 bytes if needed.
+        Validate the pepper and adjusts its length to 16 bytes if needed.
 
-        Args:
+        Arguments:
             pepper (Any): The pepper value, which can be any type supported by _convert_data_to_bytes.
 
         Returns:
@@ -161,9 +160,9 @@ class Hasher:
 
     def _convert_data_to_bytes(self, data: Any) -> bytes:
         """
-        Converts various data types to bytes for hashing.
+        Convert various data types to bytes for hashing.
 
-        Args:
+        Arguments:
             data (Any): The data to be converted. Supported types include str, int, float, bytes, list, dict, and tuple.
 
         Returns:
@@ -185,9 +184,9 @@ class Hasher:
 
     def _initialize_vector(self, data: bytes) -> bytes:
         """
-        Initializes the hashing vector using the data and salt.
+        Initialise the hashing vector using the data and salt.
 
-        Args:
+        Arguments:
             data (bytes): The data to be hashed.
 
         Returns:
@@ -200,9 +199,9 @@ class Hasher:
 
     def _mix(self, block: bytes, hash_value: bytes, salt_value: bytes) -> bytes:
         """
-        Mixes the hash_value with the block and salt_value for each round.
+        Mix the hash_value with the block and salt_value for each round.
 
-        Args:
+        Arguments:
             block (bytes): The current data block being hashed.
             hash_value (bytes): The current hash value.
             salt_value (bytes): Salt value to add randomness to the mixing process.
@@ -221,9 +220,9 @@ class Hasher:
 
     def hash(self, data: Any, temp_salt: Optional[bytes] = None) -> str:
         """
-        Hashes any data type into a string representation.
+        Hash any data type into a string representation.
 
-        Args:
+        Arguments:
             data (Any): The data to be hashed.
             temp_salt (bytes, optional): A temporary salt for hashing.
 
@@ -246,9 +245,9 @@ class Hasher:
 
     def hash_file(self, file_path: str, temp_salt: Optional[bytes] = None) -> str:
         """
-        Hashes a file's contents.
+        Hash a file's contents.
 
-        Args:
+        Arguments:
             file_path (str): Path to the file.
             temp_salt (bytes, optional): A temporary salt for hashing.
 
@@ -277,9 +276,9 @@ class Hasher:
 
     def validate(self, data: Any, given_hash: str) -> bool:
         """
-        Validates a hash by comparing it with a computed hash of the data.
+        Validate a hash by comparing it with a computed hash of the data.
 
-        Args:
+        Arguments:
             data (Any): The data to be validated.
             given_hash (str): The hash to compare against.
 
@@ -294,9 +293,9 @@ class Hasher:
 
     def validate_file(self, file_path: str, given_hash: str) -> bool:
         """
-        Validates a file's hash by comparing it with a computed hash.
+        Validate a file's hash by comparing it with a computed hash.
 
-        Args:
+        Arguments:
             file_path (str): Path to the file.
             given_hash (str): The hash to compare against.
 
@@ -311,9 +310,9 @@ class Hasher:
 
     def _split_into_blocks(self, data: bytes) -> Generator[bytes, None, None]:
         """
-        Splits data into blocks of the specified block size.
+        Split data into blocks of the specified block size.
 
-        Args:
+        Arguments:
             data (bytes): The data to be split into blocks.
 
         Yields:
